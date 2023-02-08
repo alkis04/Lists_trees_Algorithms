@@ -1,0 +1,31 @@
+inserts 1
+free
+inserts 2
+print
+popb
+inserts 3
+inserts 4
+inserts 5
+print
+inserte 6
+inserte 7
+inserte 8
+inserte 9
+insertn 5 -1
+print
+insertn 0 -100
+insertn 11 100
+print
+search 101
+search -100
+search -1
+popb
+popb
+print
+deletev 5
+deletev -1
+print
+deletev -100
+print
+free
+print
