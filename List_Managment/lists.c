@@ -208,6 +208,40 @@ void print_list(Listptr list)
 
 }
 
+//Funnction that returns the nth element of the list
+int nth_element(Listptr list, int n)
+{
+    if(list == NULL || n < 0) return 0;
+    int i = 0;
+    Listptr current = list;
+    while(current != NULL && i < n) /*Go to the nth item of the list if this exist*/
+    {
+        current = current->next;
+        i++;
+    }
+    if(current == NULL) /*The nth of the list doesn't exist*/
+    {
+        return 0;
+    }
+    else
+    {
+        return current->data; /*Return the value of the nth item of the list*/
+    }
+}
+
+//Function that returns the number of elements of the list
+int list_size(Listptr list)
+{
+    int size = 0;
+    Listptr current = list;
+    while(current != NULL) /*Visit the elements up to end*/
+    {
+        size++; /*Increase the size*/
+        current = current->next; /*Go to the next node*/
+    }
+    return size;
+}
+
 int main(void)
 {
     Listptr list = NULL;
@@ -262,6 +296,15 @@ int main(void)
         else if(strcmp(command, "print") == 0)
         {
             print_list(list);
+        }
+        else if(strcmp(command, "nth") == 0)
+        {
+            scanf("%d", &n);
+            printf("%d\n", nth_element(list, n));
+        }
+        else if(strcmp(command, "size") == 0)
+        {
+            printf("%d\n", list_size(list));
         }
         else if(strcmp(command, "empty") == 0)
         {
