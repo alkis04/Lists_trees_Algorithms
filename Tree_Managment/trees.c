@@ -200,7 +200,7 @@ int main(void)
             free_tree(tree);
             tree = NULL;
         }
-        else if(strcmp(command, "empty"))
+        else if(strcmp(command, "empty") == 0)
         {
             if(empty(tree))
             {
