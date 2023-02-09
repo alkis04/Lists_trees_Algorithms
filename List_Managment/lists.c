@@ -319,6 +319,7 @@ int main(void)
         }
         else if(strcmp(command, "exit") == 0)
         {
+            free_list(&list);
             break;
         }
         else
