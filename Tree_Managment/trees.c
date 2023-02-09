@@ -79,6 +79,12 @@ int treesearch(Treeptr tree, int value)
         return 1; /*We found the value in the tree*/
 }
 
+int empty(Treeptr tree)
+{
+    if(tree == NULL) return 1;
+    return 0;
+}
+
 //Function that frees the tree
 void free_tree(Treeptr tree)
 {
@@ -194,7 +200,17 @@ int main(void)
             free_tree(tree);
             tree = NULL;
         }
-        
+        else if(strcmp(command, "empty"))
+        {
+            if(empty(tree))
+            {
+                printf("Tree is empty\n");
+            }
+            else
+            {
+                printf("Tree is not empty\n");
+            }
+        }
         else if(strcmp(command, "exit") == 0)
         {
             free_tree(tree);

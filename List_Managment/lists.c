@@ -209,7 +209,7 @@ void print_list(Listptr list)
 }
 
 //Funnction that returns the nth element of the list
-int nth_element(Listptr list, int n)
+int nth_element(Listptr list, int n, int *nth)
 {
     if(list == NULL || n < 0) return 0;
     int i = 0;
@@ -225,7 +225,8 @@ int nth_element(Listptr list, int n)
     }
     else
     {
-        return current->data; /*Return the value of the nth item of the list*/
+        *nth = current->data; /*Pass the value of the nth item of the list*/
+        return 1;
     }
 }
 
@@ -300,7 +301,13 @@ int main(void)
         else if(strcmp(command, "nth") == 0)
         {
             scanf("%d", &n);
-            printf("%d\n", nth_element(list, n));
+            int nth;
+            if(nth_element(list, n, &nth))
+
+            printf("%d\n", nth);
+            else
+                printf("Failed\n");
+            
         }
         else if(strcmp(command, "size") == 0)
         {
