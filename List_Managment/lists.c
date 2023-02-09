@@ -274,9 +274,13 @@ int main(void)
         {
             free_list(&list);
         }
+        else if(strcmp(command, "exit") == 0)
+        {
+            break;
+        }
         else
         {
-            printf("wrong command\n");
+            printf("Invalid command\n");
         }       
     }   
     return 0;
