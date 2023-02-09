@@ -87,7 +87,7 @@ void free_tree(Treeptr tree)
     free_tree(tree->left); /*Free the left subtree*/
     free_tree(tree->right); /*Free the right subtree*/
     free(tree); /*Free the root*/
-}
+} //Remember to the tree to NULL after freeing
 
         /*ADVANCED FUNCTION*/
 
@@ -144,7 +144,7 @@ Treeptr delete_v(Treeptr tree, int value)
     return tree;
 }
 
-int main()
+int main(void)
 {
     Treeptr tree = NULL;
     //case that gives access to all the functions via commands in the console
