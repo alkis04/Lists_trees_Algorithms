@@ -88,18 +88,21 @@ int insert_at_n(Listptr *list, int n, int d)
 
 //Function that deletes the first node of the list with value = v
 int delete_v(Listptr *list, int v)
-{
+{   
+    
     if(empty(*list)) return 0;
-
+   
     Listptr current = *list, prev = NULL;
-
-    while(current->data != v && current != NULL) /*Visit elements till we find v or up to end*/
+  
+    while(current != NULL && current->data != v) /*Visit elements till we find v or up to end*/
     {
         prev = current; /*Update the previous pointer node*/
         current = current->next; /*Update the current pointer node*/
-    }
+    } 
     if(current == NULL) /*The value v doesnt exist in the list*/
+    { 
         return 0;
+    }
     if(prev == NULL) /*The value v is in the first node of the list*/
     {
         *list = current->next; /*Move the list pointer to the next node*/
@@ -182,9 +185,14 @@ int delete_nth_element(Listptr *list, int n)
 }
 
 //Function that adds a node at the end of a list
-void insert_at_end(Listptr list, int d)
+void insert_at_end(Listptr *list, int d)
 {
-    Listptr current = list;
+    if(empty(*list)) /*If the list is empty, we use insert_at_start*/
+    {
+        insert_at_start(list, d);
+        return;
+    }
+    Listptr current = *list;
     while(current->next != NULL) /*Go to the end of the list*/
     {
         current = current->next;
@@ -259,7 +267,7 @@ int main(void)
         else if(strcmp(command, "inserte") == 0)
         {
             scanf("%d", &d);
-            insert_at_end(list, d);
+            insert_at_end(&list, d);
         }
         else if(strcmp(command, "insertn") == 0)
         {

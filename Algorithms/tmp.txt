@@ -1,0 +1,85 @@
+void quicksort(int n, double *x)
+{ quicksort_body(x, 0, n-1);    /* Call recursive quicksort to sort */
+}          /* elements of the array from position 0 to position n-1 */
+
+void quicksort_body(double *x, int up, int down)
+{ int start, end;
+  start = up;              /* Save start position of small elements */
+  end = down;                /* Save end position of large elements */
+  while (up < down) {            /* Pivot element is at up position */
+    while (x[down] >= x[up] && up < down)      /* Let down elements */
+      down--;              /* larger than pivot stay where they are */
+    if (up != down) {                    /* If pivot is not reached */
+      swapd(&x[up], &x[down]);   /* echange it with smaller element */
+      up++;     /* Pivot is at down position, move up a bit further */
+    }
+    while (x[up] <= x[down] && up < down)        /* Let up elements */
+    up++;                 /* smaller than pivot stay where they are */
+    if (up != down) {                    /* If pivot is not reached */
+      swapd(&x[up], &x[down]);   /* exchange it with larger element */
+      down--;   /* Pivot is at up position, move down a bit further */
+    } }       /* Now up = down is the position of the pivot element */
+  if (start < up-1) /* Is there at least one element left of pivot? */
+    quicksort_body(x, start, up-1); /* Quick(sort) smaller elements */
+  if (end > down+1)/* Is there at least one element right of pivot? */
+    quicksort_body(x, down+1, end);  /* Quick(sort) larger elements */
+}
+
+ int i, j, k, tmp;
+    for(i = n / 2 - 1; i >= 0; i--)
+    {
+        k = i;
+        tmp = arr[k];
+        j = 2 * k + 1;
+        while(j < n)
+        {
+            if(j + 1 < n)
+            {
+                if(arr[j] < arr[j + 1])
+                {
+                    j = j + 1;
+                }
+            }
+            if(tmp < arr[j])
+            {
+                arr[k] = arr[j];
+                k = j;
+                j = 2 * k + 1;
+            }
+            else
+            {
+                break;
+            }
+        }
+        arr[k] = tmp;
+    }
+    for(i = n - 1; i >= 0; i--)
+    {
+        tmp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = tmp;
+        k = 0;
+        j = 1;
+        while(j < i)
+        {
+            if(j + 1 < i)
+            {
+                if(arr[j] < arr[j + 1])
+                {
+                    j = j + 1;
+                }
+            }
+            if(arr[k] < arr[j])
+            {
+                tmp = arr[k];
+                arr[k] = arr[j];
+                arr[j] = tmp;
+                k = j;
+                j = 2 * k + 1;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
